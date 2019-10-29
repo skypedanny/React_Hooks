@@ -1,35 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-import "./styles.css";
-
-const useInput = (initialValue, validator) => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = event => {
-    const {
-      target: { value }
-    } = event;
-    let willUpdate = true;
-
-    if (typeof validator === "function") {
-      willUpdate = validator(value);
-    }
-    if (willUpdate) {
-      setValue(value);
-    }
-  };
-  return { value, onChange };
-};
-a;
-//function에서 event 처리
 const App = () => {
-  const maxLen = value => value.length <= 10;
-  const name = useInput("Mr.", maxLen);
+  const sayHello = () => console.log("Hello");
+  //componentDidmount, componentWillunmount, componentDidUpdate
+
+  // useEffect(() => {
+  //   sayHello();
+  // });
+
+  const [number, setNumber] = useState(0);
+  const [aNumber, setAnumber] = useState(0);
+  useEffect(sayHello, []);
+
   return (
-    //{...name} = name unpack
     <div className="App">
-      <h1>Hello</h1>
-      <input placeholder="Name" {...name} />
+      <div>Hi</div>
+      <button onClick={() => setNumber(number + 1)}>{number}</button>
+      <button onClick={() => setAnumber(aNumber - 1)}>{aNumber}</button>
     </div>
   );
 };
